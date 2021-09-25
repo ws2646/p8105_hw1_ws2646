@@ -1,0 +1,6 @@
+---
+title: "homework 1"
+author: "Weize Sun"
+date: "9/25/2021"
+output: github_document
+---
