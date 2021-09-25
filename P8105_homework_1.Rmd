@@ -34,5 +34,17 @@ as.numeric(pull(hw1_df, job))
 ```
 After I used the *as.numeric* and *pull* function, I found logical vectors have been changed to 0 and 1 (which confirmed my guess), because they only have "true" and "false" these two variables; character vectors have been changed to all "NA"s, because they are all different characters so that couldn't be changed to numbers; factor vectors have been changed to 1, 2, and 3, because there are total three categories so that 1, 2, and 3 could represent those categories.
 
+## Problem 2
+```{r}
+data("penguins", package = "palmerpenguins")
+names(penguins)
+head(penguins)
+skimr::skim(penguins)
+nrow(penguins)
+ncol(penguins)
 
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+ggsave("penguin_scatter_plot.pdf", height = 4, width = 6)
+
+```
 
