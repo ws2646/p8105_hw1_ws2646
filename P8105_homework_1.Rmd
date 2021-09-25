@@ -2,5 +2,20 @@
 title: "homework 1"
 author: "Weize Sun"
 date: "9/25/2021"
-output: github_document
+output: html_document
 ---
+```{r}
+library(tidyverse)
+```
+
+## Problem 1
+```{r}
+hw1_df = 
+  tibble(
+    sample = rnorm(10),
+    gr_than_0 = sample > 0,
+    vec_char = c("Thorns", "Surtr", "SilverAsh", "Ash", "Blaze", "Ifrit", "Mountain", "Archetto", "Dusk", "Broca"),
+    vec_factor = factor(c("Guard", "Guard", "Guard", "Sniper", "Guard", "Caster", "Guard", "Sniper", "Caster", "Guard"))
+  )
+```
+
