@@ -14,8 +14,25 @@ hw1_df =
   tibble(
     sample = rnorm(10),
     gr_than_0 = sample > 0,
-    vec_char = c("Thorns", "Surtr", "SilverAsh", "Ash", "Blaze", "Ifrit", "Mountain", "Archetto", "Dusk", "Broca"),
-    vec_factor = factor(c("Guard", "Guard", "Guard", "Sniper", "Guard", "Caster", "Guard", "Sniper", "Caster", "Guard"))
+    operator = c("Thorns", "Surtr", "SilverAsh", "Ash", "Blaze", "Ifrit", "Mountain", "Archetto", "Dusk", "Broca"),
+    job = factor(c("Guard", "Guard", "Guard", "Sniper", "Guard", "Caster", "Guard", "Sniper", "Caster", "Guard"))
   )
+
+hw1_df
+
+mean(pull(hw1_df, sample))
+mean(pull(hw1_df, gr_than_0))
+mean(pull(hw1_df, operator))
+mean(pull(hw1_df, job))
 ```
+When I tried to take the mean of each variable in my dataframe, I found only sample mean looks normal; logical vector's mean is 0.5, so I guess they took "true" and "false" as 0 and 1; both character vector (operator) and factor vector (job) couldn't give the means.
+
+```{r eval=FALSE}
+as.numeric(pull(hw1_df, gr_than_0))
+as.numeric(pull(hw1_df, operator))
+as.numeric(pull(hw1_df, job))
+```
+After I used the *as.numeric* and *pull* function, I found logical vectors have been changed to 0 and 1 (which confirmed my guess), because they only have "true" and "false" these two variables; character vectors have been changed to all "NA"s, because they are all different characters so that couldn't be changed to numbers; factor vectors have been changed to 1, 2, and 3, because there are total three categories so that 1, 2, and 3 could represent those categories.
+
+
 

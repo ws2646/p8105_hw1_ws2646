@@ -186,9 +186,41 @@ pre code {
   tibble(
     sample = rnorm(10),
     gr_than_0 = sample &gt; 0,
-    vec_char = c(&quot;Thorns&quot;, &quot;Surtr&quot;, &quot;SilverAsh&quot;, &quot;Ash&quot;, &quot;Blaze&quot;, &quot;Ifrit&quot;, &quot;Mountain&quot;, &quot;Archetto&quot;, &quot;Dusk&quot;, &quot;Broca&quot;),
-    vec_factor = factor(c(&quot;Guard&quot;, &quot;Guard&quot;, &quot;Guard&quot;, &quot;Sniper&quot;, &quot;Guard&quot;, &quot;Caster&quot;, &quot;Guard&quot;, &quot;Sniper&quot;, &quot;Caster&quot;, &quot;Guard&quot;))
-  )</code></pre>
+    operator = c(&quot;Thorns&quot;, &quot;Surtr&quot;, &quot;SilverAsh&quot;, &quot;Ash&quot;, &quot;Blaze&quot;, &quot;Ifrit&quot;, &quot;Mountain&quot;, &quot;Archetto&quot;, &quot;Dusk&quot;, &quot;Broca&quot;),
+    job = factor(c(&quot;Guard&quot;, &quot;Guard&quot;, &quot;Guard&quot;, &quot;Sniper&quot;, &quot;Guard&quot;, &quot;Caster&quot;, &quot;Guard&quot;, &quot;Sniper&quot;, &quot;Caster&quot;, &quot;Guard&quot;))
+  )
+
+hw1_df</code></pre>
+<pre><code>## # A tibble: 10 × 4
+##    sample gr_than_0 operator  job   
+##     &lt;dbl&gt; &lt;lgl&gt;     &lt;chr&gt;     &lt;fct&gt; 
+##  1 -0.447 FALSE     Thorns    Guard 
+##  2 -0.394 FALSE     Surtr     Guard 
+##  3 -0.364 FALSE     SilverAsh Guard 
+##  4 -1.22  FALSE     Ash       Sniper
+##  5 -0.518 FALSE     Blaze     Guard 
+##  6 -0.496 FALSE     Ifrit     Caster
+##  7  0.180 TRUE      Mountain  Guard 
+##  8 -1.15  FALSE     Archetto  Sniper
+##  9 -2.06  FALSE     Dusk      Caster
+## 10  0.496 TRUE      Broca     Guard</code></pre>
+<pre class="r"><code>mean(pull(hw1_df, sample))</code></pre>
+<pre><code>## [1] -0.5975611</code></pre>
+<pre class="r"><code>mean(pull(hw1_df, gr_than_0))</code></pre>
+<pre><code>## [1] 0.2</code></pre>
+<pre class="r"><code>mean(pull(hw1_df, operator))</code></pre>
+<pre><code>## Warning in mean.default(pull(hw1_df, operator)): argument is not numeric or
+## logical: returning NA</code></pre>
+<pre><code>## [1] NA</code></pre>
+<pre class="r"><code>mean(pull(hw1_df, job))</code></pre>
+<pre><code>## Warning in mean.default(pull(hw1_df, job)): argument is not numeric or logical:
+## returning NA</code></pre>
+<pre><code>## [1] NA</code></pre>
+<p>When I tried to take the mean of each variable in my dataframe, I found only sample mean looks normal; logical vector’s mean is 0.5, so I guess they took “true” and “false” as 0 and 1; both character vector (operator) and factor vector (job) couldn’t give the means.</p>
+<pre class="r"><code>as.numeric(pull(hw1_df, gr_than_0))
+as.numeric(pull(hw1_df, operator))
+as.numeric(pull(hw1_df, job))</code></pre>
+<p>After I used the <em>as.numeric</em> and <em>pull</em> function, I found logical vectors have been changed to 0 and 1 (which confirmed my guess), because they only have “true” and “false” these two variables; character vectors have been changed to all “NA”s, because they are all different characters so that couldn’t be changed to numbers; factor vectors have been changed to 1, 2, and 3, because there are total three categories so that 1, 2, and 3 could represent those categories.</p>
 </div>
 
 
